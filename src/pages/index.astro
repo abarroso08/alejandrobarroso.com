@@ -1,11 +1,53 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ActivityGrid from '../components/ActivityGrid.astro';
+import { byNewest, readingProgress } from '../utils/content';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const projects = (await getCollection('projects')).sort(byNewest);
+const thoughts = (await getCollection('thoughts')).filter((item) => !item.data.draft).sort(byNewest);
+const readings = (await getCollection('readings')).sort(byNewest);
+const reading = readingProgress(readings);
+const recent = [
+  ...projects.map((entry) => ({ ...entry, section: 'projects', kind: 'Project' })),
+  ...thoughts.map((entry) => ({ ...entry, section: 'thoughts', kind: 'Thought' })),
+].sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
 ---
+<BaseLayout title="Alejandro Barroso — Projects, thoughts, and reading">
+  <section class="hero">
+    <div>
+      <span class="eyebrow">Independent builder · curious generalist</span>
+      <h1>Alejandro Barroso.</h1>
+    </div>
+    <aside class="status-card">
+      <span><i class="status-dot"></i>Current focus</span>
+      <strong>Building a useful personal knowledge system.</strong>
+      <p>Exploring small software, writing clearer notes, and reading more deliberately.</p>
+    </aside>
+  </section>
 
-<Layout>
-	<Welcome />
-</Layout>
+  <section>
+    <div class="section-head"><h2>Explore</h2><p>Three views into what I’m doing.</p></div>
+    <div class="grid">
+      <a class="card" href="/projects/"><div><span class="card-kicker">Build log</span><h3>Projects</h3><p>Products, experiments, and unfinished ideas—each with a status and timeline.</p></div><div class="card-meta"><span>{projects.length} logged</span><span class="arrow">↗</span></div></a>
+      <a class="card" href="/thoughts/"><div><span class="card-kicker">Writing</span><h3>Thoughts</h3><p>Essays, working notes, and observations worth developing in public.</p></div><div class="card-meta"><span>{thoughts.length} published</span><span class="arrow">↗</span></div></a>
+      <a class="card" href="/readings/"><div><span class="card-kicker">Library</span><h3>Reading</h3><p>Books, articles, and papers, with status, ratings, and compact notes.</p></div><div class="card-meta"><span>{reading.finished} finished</span><span class="arrow">↗</span></div></a>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat"><b>{projects.filter((p) => p.data.status === 'active').length}</b><span>active projects</span></div>
+    <div class="stat"><b>{thoughts.length}</b><span>published thoughts</span></div>
+    <div class="stat"><b>{reading.reading}</b><span>currently reading</span></div>
+    <div class="stat"><b>{reading.queued}</b><span>in the queue</span></div>
+  </div>
+
+  <ActivityGrid dates={[...projects, ...thoughts, ...readings].map((entry) => entry.data.date)} label="Site activity" />
+
+  <section>
+    <div class="section-head"><h2>Recently added</h2><p>The newest work across the site.</p></div>
+    <div class="grid">
+      {recent.map((entry) => <a class="card" href={`/${entry.section}/${entry.id}/`}><div><span class="card-kicker">{entry.kind}</span><h3>{entry.data.title}</h3><p>{entry.data.description}</p></div><div class="card-meta"><span>{entry.data.date.toLocaleDateString()}</span><span class="arrow">↗</span></div></a>)}
+    </div>
+  </section>
+</BaseLayout>

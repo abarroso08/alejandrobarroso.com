@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EntryList from '../../components/EntryList.astro';
+import ActivityGrid from '../../components/ActivityGrid.astro';
+import { byNewest } from '../../utils/content';
+const entries = (await getCollection('projects')).sort(byNewest);
+---
+<BaseLayout title="Projects — Your Name">
+  <header class="page-header"><span class="eyebrow">Build log</span><h1>Projects</h1><p>Things I’m actively building, things I have completed, and ideas that may become something later.</p></header>
+  <ActivityGrid dates={entries.map((entry) => entry.data.date)} label="Project activity" />
+  <EntryList entries={entries} section="projects" />
+</BaseLayout>

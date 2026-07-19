@@ -1,46 +1,33 @@
-# Astro Starter Kit: Basics
+# Personal Dashboard Astro Starter
 
-```sh
-npm create astro@latest -- --template basics
+A minimal personal website inspired by the idea of a public home base: projects, thoughts, reading, and automatically generated activity statistics.
+
+## Start
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Open `http://localhost:4321`.
 
-## 🚀 Project Structure
+## Customize first
 
-Inside of your Astro project, you'll see the following folders and files:
+1. Replace `Your Name` in `src/layouts/BaseLayout.astro` and `src/pages/index.astro`.
+2. Change the `site` URL in `astro.config.mjs`.
+3. Edit colors and typography in `src/styles/global.css`.
+4. Replace the example Markdown files inside `src/content/`.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+## Add content
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Create a Markdown file in one of:
 
-## 🧞 Commands
+- `src/content/projects/`
+- `src/content/thoughts/`
+- `src/content/readings/`
 
-All commands are run from the root of the project, from a terminal:
+The frontmatter schema lives in `src/content.config.ts`. Statistics and activity grids update automatically at build time.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Deploy
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+This starter is fully static. Run `npm run build`; the deployable output is generated in `dist/`. It works with Vercel, Netlify, Cloudflare Pages, GitHub Pages, and other static hosts.

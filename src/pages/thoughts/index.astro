@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EntryList from '../../components/EntryList.astro';
+import ActivityGrid from '../../components/ActivityGrid.astro';
+import { byNewest } from '../../utils/content';
+const entries = (await getCollection('thoughts')).filter((item) => !item.data.draft).sort(byNewest);
+---
+<BaseLayout title="Thoughts — Your Name">
+  <header class="page-header"><span class="eyebrow">Writing</span><h1>Thoughts</h1><p>Long-form essays and shorter working notes. Published when they are useful, not necessarily finished.</p></header>
+  <ActivityGrid dates={entries.map((entry) => entry.data.date)} label="Writing activity" />
+  <EntryList entries={entries} section="thoughts" />
+</BaseLayout>

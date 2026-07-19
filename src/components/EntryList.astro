@@ -1,0 +1,16 @@
+---
+import { formatDate } from '../utils/content';
+const { entries, section } = Astro.props;
+---
+<div class="list">
+  {entries.map((entry) => (
+    <a class="list-item" href={`/${section}/${entry.id}/`}>
+      <time datetime={entry.data.date.toISOString()}>{formatDate(entry.data.date)}</time>
+      <div>
+        <h2>{entry.data.title}</h2>
+        <p>{entry.data.description ?? entry.data.notes ?? entry.data.author}</p>
+      </div>
+      <span class="pill">{entry.data.status ?? entry.data.type ?? 'note'}</span>
+    </a>
+  ))}
+</div>

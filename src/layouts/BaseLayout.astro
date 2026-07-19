@@ -1,0 +1,29 @@
+---
+import '../styles/global.css';
+const { title = 'Alejandro Barroso', description = 'A personal website for projects, thoughts, and reading.' } = Astro.props;
+const path = Astro.url.pathname;
+const links = [
+  ['Projects', '/projects/'],
+  ['Thoughts', '/thoughts/'],
+  ['Reading', '/readings/'],
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main class="shell"><slot /></main>
+    <footer>
+      <a class="brand" href="/">Alejandro Barroso</a>
+      <nav class="nav" aria-label="Primary navigation">
+        {links.map(([label, href]) => <a href={href} aria-current={path.startsWith(href) ? 'page' : undefined}>{label}</a>)}
+      </nav>
+    </footer>
+  </body>
+</html>

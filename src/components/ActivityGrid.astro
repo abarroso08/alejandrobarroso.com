@@ -1,0 +1,21 @@
+---
+import { activityByDay } from '../utils/content';
+const { dates, label = 'Publishing activity' } = Astro.props;
+const activity = activityByDay(dates);
+const total = activity.reduce((sum, day) => sum + day.count, 0);
+---
+<section class="panel activity">
+  <div class="activity-top">
+    <h2>{label}</h2>
+    <span>{total} entries in the last 12 weeks</span>
+  </div>
+  <div class="activity-grid" aria-label={`${total} published entries in the last 12 weeks`}>
+    {activity.map(({ date, count }) => (
+      <span
+        class="activity-cell"
+        data-level={Math.min(count, 3)}
+        title={`${date.toLocaleDateString()}: ${count} entries`}
+      ></span>
+    ))}
+  </div>
+</section>

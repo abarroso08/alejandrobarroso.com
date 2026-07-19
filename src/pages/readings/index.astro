@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ActivityGrid from '../../components/ActivityGrid.astro';
+import { byNewest, readingProgress, formatDate } from '../../utils/content';
+const entries = (await getCollection('readings')).sort(byNewest);
+const stats = readingProgress(entries);
+---
+<BaseLayout title="Reading — Your Name">
+  <header class="page-header"><span class="eyebrow">Library</span><h1>Reading</h1><p>A lightweight reading tracker for books, articles, and papers, including what is finished, underway, and queued.</p></header>
+  <div class="stats"><div class="stat"><b>{entries.length}</b><span>total items</span></div><div class="stat"><b>{stats.finished}</b><span>finished</span></div><div class="stat"><b>{stats.reading}</b><span>in progress</span></div><div class="stat"><b>{stats.queued}</b><span>queued</span></div></div>
+  <ActivityGrid dates={entries.map((entry) => entry.data.date)} label="Reading activity" />
+  <div class="list">
+    {entries.map((entry) => <a class="list-item" href={`/readings/${entry.id}/`}><time>{formatDate(entry.data.date)}</time><div><h2>{entry.data.title}</h2><p>{entry.data.author}{entry.data.notes ? ` — ${entry.data.notes}` : ''}</p></div><span class="pill">{entry.data.status}</span></a>)}
+  </div>
+</BaseLayout>
