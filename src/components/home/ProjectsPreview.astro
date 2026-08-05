@@ -1,0 +1,140 @@
+---
+const projects = [
+  {
+    title: "Personal Website",
+    year: "2026",
+    tags: "Astro · Design",
+    href: "/projects/personal-website",
+  },
+  {
+    title: "Home Server",
+    year: "2026",
+    tags: "Docker · Linux",
+    href: "/projects/home-server",
+  },
+  {
+    title: "AISC Madrid",
+    year: "2026",
+    tags: "PHP · Astro",
+    href: "/projects/aisc",
+  },
+];
+---
+
+<section class="projects">
+
+  <div class="section-header">
+    <h2>Selected Projects</h2>
+    <a href="/projects">View all →</a>
+  </div>
+
+  <div class="grid">
+    {
+      projects.map((project) => (
+        <a href={project.href} class="card">
+          <small>{project.year}</small>
+
+          <h3>{project.title}</h3>
+
+          <p>{project.tags}</p>
+        </a>
+      ))
+    }
+  </div>
+
+</section>
+
+<style>
+.projects{
+    padding:7rem 0;
+}
+
+.section-header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:3rem;
+}
+
+.section-header h2{
+
+    font-size:1.8rem;
+
+}
+
+.section-header a{
+
+    color:var(--color-text-muted);
+
+}
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:3rem;
+
+}
+
+.card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:.75rem;
+
+    transition:.25s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.card small{
+
+    color:var(--color-text-muted);
+
+}
+
+.card h3{
+
+    font-size:1.2rem;
+
+    font-weight:600;
+
+    line-height:1.2;
+
+}
+
+.card p{
+
+    color:var(--color-text-muted);
+
+}
+
+.card:hover h3{
+
+    color:var(--color-accent);
+
+}
+
+@media(max-width:900px){
+
+.grid{
+
+grid-template-columns:1fr;
+
+gap:2rem;
+
+}
+
+}
+</style>

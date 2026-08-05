@@ -1,0 +1,62 @@
+<section class="now">
+
+  <h2>Now</h2>
+
+  <div class="items">
+
+    <div class="item">
+      <span>Building</span>
+      <p>My personal website.</p>
+    </div>
+
+    <div class="item">
+      <span>Reading</span>
+      <p>Designing Data-Intensive Applications.</p>
+    </div>
+
+    <div class="item">
+      <span>Learning</span>
+      <p>Rust and distributed systems.</p>
+    </div>
+
+    <div class="item">
+      <span>Thinking</span>
+      <p>How can engineering make people's lives better?</p>
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+
+.now h2 {
+  font-size: .95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--color-accent);
+
+  margin-bottom: 3rem;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: start;
+}
+
+.item span {
+  color: var(--color-text-muted);
+}
+
+.item p {
+  max-width: 55ch;
+}
+</style>
