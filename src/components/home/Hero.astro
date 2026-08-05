@@ -1,0 +1,72 @@
+<section class="hero">
+  <p class="eyebrow">Engineering notebook</p>
+
+  <h1>
+    Alejandro Barroso<span class="accent">.</span>
+  </h1>
+
+  <p class="lead">
+    Trying to understand 
+    how the world works.
+  </p>
+
+  <p class="description">
+    This website is where I document the projects I build, the books I read,
+    the ideas I refine, and the places that shape the way I think.
+  </p>
+</section>
+
+<style>
+.hero {
+  padding: 2rem 0 4rem;
+}
+
+.eyebrow {
+  font-size: 0.95rem;
+  color: var(--color-accent);
+  margin-bottom: var(--space-3);
+}
+
+h1 {
+  font-size: clamp(4rem, 10vw, 10rem);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  font-weight: 650;
+  margin-bottom: var(--space-4);
+}
+
+.accent {
+  color: var(--color-accent);
+}
+
+.lead {
+  padding: 2rem 0 0 0;
+  font-size: 1.8rem;
+  line-height: 1.3;
+  max-width: 20ch;
+  margin-bottom: var(--space-4);
+}
+
+.description {
+  max-width: 58ch;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 6rem 0;
+  }
+
+  h1 {
+    font-size: 3.8rem;
+  }
+
+  .lead {
+    font-size: 1.4rem;
+  }
+
+  .description {
+    margin-left: 0;
+  }
+}
+</style>

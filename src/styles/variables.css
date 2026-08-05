@@ -1,0 +1,39 @@
+:root {
+  /* Colors */
+
+  --color-bg: #111316;
+  --color-surface: #ffffff;
+
+  --color-text: #F1F1F1;
+  --color-text-muted: #969aa3;
+
+  --color-border: #ececec;
+
+  /* Signature */
+
+  --color-accent: #FF925C;
+
+  /* Layout */
+
+  --content-width: 720px;
+  --wide-width: 960px;
+
+  /* Spacing */
+
+  --space-1: 0.5rem;   /* 8px */
+  --space-2: 1rem;     /* 16px */
+  --space-3: 1.5rem;   /* 24px */
+  --space-4: 2rem;     /* 32px */
+  --space-5: 3rem;     /* 48px */
+  --space-6: 4rem;     /* 64px */
+  --space-7: 6rem;     /* 96px */
+
+  /* Radius */
+
+  --radius: 6px;
+
+  /* Typography */
+
+  --font-sans: "Geist", system-ui, sans-serif;
+  --font-mono: "Geist Mono", monospace;
+}
