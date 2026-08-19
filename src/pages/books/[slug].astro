@@ -1,0 +1,13 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+export async function getStaticPaths() { const books = await getCollection('readings'); return books.map((book) => ({ params: { slug: book.id }, props: { book } })); }
+const { book } = Astro.props;
+const { Content } = await render(book);
+---
+<BaseLayout title={`${book.data.title} · Alejandro Barroso`}><article class="container">
+  <a class="back" href="/books">← All books</a><header><p>{book.data.author} · {book.data.date.getFullYear()}</p><h1>{book.data.title}<span>.</span></h1>{book.data.rating && <p class="rating">{book.data.rating}/5</p>}</header><div class="prose"><Content /></div>
+</article></BaseLayout>
+<style>
+  article { padding: 5rem 0 7rem; } .back, header p { color: var(--color-text-muted); } .back:hover { color:var(--color-accent); } header { padding: 4rem 0; border-bottom:1px solid rgba(241,241,241,.16); } h1 { font-size:clamp(3rem,9vw,6.5rem); margin:.5rem 0 1rem; } h1 span { color:var(--color-accent); } .rating { color:var(--color-accent); } .prose { max-width:62ch; padding:3rem 0; } .prose :global(p) { margin-bottom:1.5rem; } .prose :global(h2) { font-size:1.6rem; margin:3rem 0 1rem; }
+</style>

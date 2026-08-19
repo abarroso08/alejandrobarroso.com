@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+---
+<BaseLayout title="About · Alejandro Barroso"><div class="container">
+  <PageIntro eyebrow="A little context" title="About" description="I like making useful things and taking the long way toward understanding them." />
+  <section class="story"><div class="label">In brief</div><div class="copy">
+    <p>I’m Alejandro Barroso, a developer interested in the quiet machinery behind the things we use every day. I’m drawn to projects where thoughtful technology can make a real difference—especially when it is simple, reliable, and humane.</p>
+    <p>This site is my public notebook. It holds the work I’m proud of, notes from the books that change how I see a problem, and ideas that are still taking shape.</p>
+    <p>When I’m not in front of a screen, I’m probably reading, walking, or trying to notice something I had previously overlooked.</p>
+  </div></section>
+  <section class="contact"><p>Have something interesting in mind?</p><a href="mailto:hello@alejandrobarroso.com">Let’s talk →</a></section>
+</div></BaseLayout>
+<style>
+  .story { display:grid; grid-template-columns:10rem 1fr; gap:var(--space-4); border-top:1px solid rgba(241,241,241,.16); padding:3.5rem 0 6rem; }
+  .label { color:var(--color-accent); font-size:.9rem; } .copy { max-width:58ch; } .copy p + p { margin-top:1.5rem; }
+  .contact { padding:3rem 0 7rem; border-top:1px solid rgba(241,241,241,.16); } .contact p { color:var(--color-text-muted); margin-bottom:.5rem; } .contact a { color:var(--color-accent); font-size:clamp(1.7rem,4vw,2.5rem); border-bottom:1px solid currentColor; }
+  @media(max-width:700px) { .story { grid-template-columns:1fr; gap:1rem; } }
+</style>

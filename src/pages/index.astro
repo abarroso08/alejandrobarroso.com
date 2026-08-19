@@ -1,14 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/home/Hero.astro";
-import Now from "../components/home/Now.astro";
-import ProjectsPreview from "../components/home/ProjectsPreview.astro"
+import ProjectsPreview from "../components/home/ProjectsPreview.astro";
 ---
 
 <BaseLayout title="Alejandro Barroso">
 
-    <Hero />
-    <Now />
-    <ProjectsPreview />
+    <div class="container">
+        <Hero />
+        <ProjectsPreview />
+    </div>
 
 </BaseLayout>

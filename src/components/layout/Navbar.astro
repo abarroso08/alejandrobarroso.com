@@ -1,72 +1,18 @@
 <header class="navbar">
-
-
-    <nav>
-
-        <a href="/writing">Writing</a>
-
-        <a href="/projects">Projects</a>
-
-        <a href="/books">Books</a>
-
-        <a href="/about">About</a>
-
-    </nav>
-
+  <nav aria-label="Main navigation">
+    <a class="home" href="/">AB<span>.</span></a>
+    <a href="/projects">Projects</a>
+    <a href="/books">Books</a>
+    <a href="/about">About</a>
+  </nav>
 </header>
 
 <style>
-
-.navbar{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:var(--space-2) var(--space-4);
-
-}
-
-.logo{
-
-    font-weight:600;
-
-    letter-spacing:-0.02em;
-
-}
-
-nav{
-
-    display:flex;
-
-    gap:var(--space-4);
-
-    margin:;
-
-}
-
-nav a{
-
-    color:var(--color-text-muted);
-
-}
-
-nav a:hover{
-
-    color:var(--color-text);
-
-}
-
-@media (max-width:700px){
-
-nav{
-
-display:none;
-
-}
-
-}
-
+  .navbar { padding: var(--space-2) var(--space-4); }
+  nav { display: flex; align-items: center; gap: var(--space-4); max-width: var(--wide-width); margin: 0 auto; }
+  nav a { color: var(--color-text-muted); }
+  nav a:hover { color: var(--color-text); }
+  .home { color: var(--color-text); font-weight: 650; margin-right: auto; }
+  .home span { color: var(--color-accent); }
+  @media (max-width: 700px) { nav { gap: var(--space-3); } nav a:not(.home) { font-size: .9rem; } }
 </style>

@@ -1,0 +1,22 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+export async function getStaticPaths() { const projects = await getCollection('projects'); return projects.map((project) => ({ params: { slug: project.id }, props: { project } })); }
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+<BaseLayout title={`${project.data.title} · Alejandro Barroso`}>
+  <article class="container">
+    <a class="back" href="/projects">← All projects</a>
+    <header><p>{project.data.status} · {project.data.date.getFullYear()}</p><h1>{project.data.title}<span>.</span></h1><div class="tags">{project.data.tags.map(tag => <span>{tag}</span>)}</div></header>
+    <div class="prose"><Content /></div>
+    {project.data.url && <a class="visit" href={project.data.url} target="_blank">Visit project ↗</a>}
+  </article>
+</BaseLayout>
+<style>
+  article { padding: 5rem 0 7rem; } .back { color: var(--color-text-muted); } .back:hover { color: var(--color-accent); }
+  header { padding: 4rem 0; border-bottom: 1px solid rgba(241,241,241,.16); } header p, .tags { color: var(--color-text-muted); font-size: .9rem; }
+  h1 { font-size: clamp(3rem, 9vw, 6.5rem); margin: .5rem 0 1.5rem; } h1 span { color: var(--color-accent); } .tags { display: flex; gap: .75rem; }
+  .prose { max-width: 62ch; padding: 3rem 0; } .prose :global(p) { margin-bottom: 1.5rem; } .prose :global(h2) { font-size: 1.6rem; margin: 3rem 0 1rem; } .prose :global(a), .visit { color: var(--color-accent); }
+  .visit { display: inline-block; border-bottom: 1px solid currentColor; }
+</style>

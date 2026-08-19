@@ -1,140 +1,69 @@
 ---
-const projects = [
-  {
-    title: "Personal Website",
-    year: "2026",
-    tags: "Astro · Design",
-    href: "/projects/personal-website",
-  },
-  {
-    title: "Home Server",
-    year: "2026",
-    tags: "Docker · Linux",
-    href: "/projects/home-server",
-  },
-  {
-    title: "AISC Madrid",
-    year: "2026",
-    tags: "PHP · Astro",
-    href: "/projects/aisc",
-  },
-];
+import { getCollection } from 'astro:content';
+
+const byNewest = (a: { data: { date: Date } }, b: { data: { date: Date } }) =>
+  b.data.date.valueOf() - a.data.date.valueOf();
+
+const projects = (await getCollection('projects'))
+  .filter((project) => project.data.featured)
+  .sort(byNewest)
+  .slice(0, 3);
+
+const books = (await getCollection('readings'))
+  .filter((reading) => reading.data.type === 'book')
+  .sort(byNewest)
+  .slice(0, 3);
 ---
 
-<section class="projects">
+<section class="highlights" aria-label="Recent work and reading notes">
+  <div class="columns">
+    <section class="column" aria-labelledby="projects-heading">
+      <div class="column-header">
+        <h3 id="projects-heading">Recent projects</h3>
+        <a href="/projects">All projects <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="entries">
+        {projects.map((project) => <a href={`/projects/${project.id}`} class="entry">
+          <small>{project.data.date.getFullYear()} · {project.data.status}</small>
+          <h4>{project.data.title}</h4>
+          <p>{project.data.description}</p>
+        </a>)}
+      </div>
+    </section>
 
-  <div class="section-header">
-    <h2>Selected Projects</h2>
-    <a href="/projects">View all →</a>
+    <section class="column" aria-labelledby="books-heading">
+      <div class="column-header">
+        <h3 id="books-heading">Book reviews</h3>
+        <a href="/books">All books <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="entries">
+        {books.map((book) => <a href={`/books/${book.id}`} class="entry">
+          <small>{book.data.date.getFullYear()} · {book.data.status}</small>
+          <h4>{book.data.title}</h4>
+          <p>{book.data.author}</p>
+          {book.data.notes && <p class="notes">{book.data.notes}</p>}
+        </a>)}
+      </div>
+    </section>
   </div>
-
-  <div class="grid">
-    {
-      projects.map((project) => (
-        <a href={project.href} class="card">
-          <small>{project.year}</small>
-
-          <h3>{project.title}</h3>
-
-          <p>{project.tags}</p>
-        </a>
-      ))
-    }
-  </div>
-
 </section>
 
 <style>
-.projects{
-    padding:7rem 0;
-}
-
-.section-header{
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    margin-bottom:3rem;
-}
-
-.section-header h2{
-
-    font-size:1.8rem;
-
-}
-
-.section-header a{
-
-    color:var(--color-text-muted);
-
-}
-
-.grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:3rem;
-
-}
-
-.card{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:.75rem;
-
-    transition:.25s;
-
-}
-
-.card:hover{
-
-    transform:translateY(-4px);
-
-}
-
-.card small{
-
-    color:var(--color-text-muted);
-
-}
-
-.card h3{
-
-    font-size:1.2rem;
-
-    font-weight:600;
-
-    line-height:1.2;
-
-}
-
-.card p{
-
-    color:var(--color-text-muted);
-
-}
-
-.card:hover h3{
-
-    color:var(--color-accent);
-
-}
-
-@media(max-width:900px){
-
-.grid{
-
-grid-template-columns:1fr;
-
-gap:2rem;
-
-}
-
-}
+  .highlights { padding: var(--space-4) 0; }
+  .section-heading { max-width: 32rem; margin-bottom: var(--space-6); }
+  .section-heading p { color: var(--color-accent); font-size: .95rem; margin-bottom: var(--space-2); }
+  .section-heading h2 { font-size: clamp(2rem, 4vw, 3rem); }
+  .columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6); }
+  .column-header { align-items: baseline; border-bottom: 1px solid rgba(241, 241, 241, .16); display: flex; justify-content: space-between; padding-bottom: var(--space-2); }
+  .column-header h3 { font-size: 1.1rem; }
+  .column-header a { color: var(--color-text-muted); font-size: .9rem; }
+  .column-header a:hover { color: var(--color-accent); }
+  .entries { display: flex; flex-direction: column; }
+  .entry { border-bottom: 1px solid rgba(241, 241, 241, .16); padding: var(--space-4) 0; }
+  .entry small { display: block; font-size: .8rem; margin-bottom: var(--space-2); text-transform: capitalize; }
+  .entry h4 { font-size: 1.3rem; margin-bottom: .4rem; transition: color 180ms ease; }
+  .entry p { color: var(--color-text-muted); font-size: .95rem; line-height: 1.55; }
+  .entry .notes { margin-top: var(--space-2); }
+  .entry:hover h4 { color: var(--color-accent); }
+  @media (max-width: 760px) { .highlights { padding-top: var(--space-6); } .columns { grid-template-columns: 1fr; gap: var(--space-6); } }
 </style>
