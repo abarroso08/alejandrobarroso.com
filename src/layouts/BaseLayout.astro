@@ -15,6 +15,8 @@ title="Alejandro Barroso"
 
 }=Astro.props;
 
+const isLandingPage = Astro.url.pathname === "/";
+
 ---
 
 <!doctype html>
@@ -37,7 +39,11 @@ content="width=device-width, initial-scale=1"/>
 
 <div class="page">
 
+
+
 <main>
+
+{!isLandingPage && <div class="container"><a class="back-home" href="/">← Go back</a></div>}
 
 <slot/>
 
@@ -50,3 +56,14 @@ content="width=device-width, initial-scale=1"/>
 </body>
 
 </html>
+
+<style>
+  .back-home {
+    display: inline-block;
+    padding-top: var(--space-5);
+    color: var(--color-text-muted);
+    font-size: .8rem;
+  }
+
+  .back-home:hover { color: var(--color-text); }
+</style>

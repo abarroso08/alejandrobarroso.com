@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageIntro from '../components/PageIntro.astro';
+import SocialLinks from '../components/SocialLinks.astro';
 ---
 <BaseLayout title="About · Alejandro Barroso"><div class="container">
   <PageIntro eyebrow="A little context" title="About" description="I like to be happy and discover what the world has to offer :)." />
+  <SocialLinks />
   <section class="story"><div class="label">In brief</div><div class="copy">
     <p>
   I’m Alejandro, a guy from South Madrid trying to make the most out of his twenties. I study Data Science and Telecommunications, two fields that have given me plenty of reasons to stay curious. I’ve studied in the United States and Australia, worked at Nokia, and somehow managed to keep a dual degree moving along the way. I’m also the web developer for <a class="aisc-link" href="https://aiscmadrid.com">AISC</a> at my uni, where I get to turn some of that curiosity into something people actually use, alongside an amazing team.
@@ -23,6 +25,7 @@ import PageIntro from '../components/PageIntro.astro';
 </div></BaseLayout>
 <style>
   .aisc-link{text-decoration: underline;}
+  :global(.social-links) { margin-top: var(--space-4); }
   .story { display:grid; grid-template-columns:10rem 1fr; gap:var(--space-4); border-top:1px solid rgba(241,241,241,.16); padding:3.5rem 0 6rem; }
   .label { color:var(--color-accent); font-size:.9rem; } .copy { max-width:58ch; } .copy p + p { margin-top:1.5rem; }
   .contact { padding:3rem 0 7rem; border-top:1px solid rgba(241,241,241,.16); } .contact p { color:var(--color-text-muted); margin-bottom:.5rem; } .contact a { color:var(--color-accent); font-size:clamp(1.7rem,4vw,2.5rem); border-bottom:1px solid currentColor; }

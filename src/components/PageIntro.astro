@@ -8,10 +8,10 @@ const { eyebrow, title, description } = Astro.props;
   <p>{description}</p>
 </header>
 <style>
-  .intro { padding: 7rem 0 4.5rem; }
+  .intro { padding: var(--space-4) 0 0; }
   .eyebrow { color: var(--color-accent); font-size: .95rem; margin-bottom: var(--space-3); }
   h1 { font-size: clamp(3.5rem, 9vw, 7rem); margin-bottom: var(--space-3); }
   h1 span { color: var(--color-accent); }
   .intro > p:last-child { color: var(--color-text-muted); max-width: 53ch; }
-  @media (max-width: 700px) { .intro { padding: 4.5rem 0 3.5rem; } }
+  @media (max-width: 700px) { .intro { padding: var(--space-3) 0 3.5rem; } }
 </style>
