@@ -12,6 +12,7 @@ const projects = defineCollection({
     tags: z.array(z.string()).default([]),
     url: z.url().optional(),
     featured: z.boolean().default(false),
+    draft: z.boolean().default(false),
   }),
 });
 
@@ -37,6 +38,7 @@ const readings = defineCollection({
     rating: z.number().min(1).max(5).optional(),
     url: z.url().optional(),
     notes: z.string().optional(),
+    draft: z.boolean().default(false),
   }),
 });
 

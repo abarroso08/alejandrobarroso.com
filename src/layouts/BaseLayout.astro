@@ -15,7 +15,10 @@ title="Alejandro Barroso"
 
 }=Astro.props;
 
-const isLandingPage = Astro.url.pathname === "/";
+const isNotLandingPage =
+  Astro.url.pathname === "/about" ||
+  Astro.url.pathname === "/projects" ||
+  Astro.url.pathname === "/books";
 
 ---
 
@@ -43,7 +46,7 @@ content="width=device-width, initial-scale=1"/>
 
 <main>
 
-{!isLandingPage && <div class="container"><a class="back-home" href="/">← Go back</a></div>}
+{isNotLandingPage && <div class="container"><a class="back-home" href="/">← Go back</a></div>}
 
 <slot/>
 

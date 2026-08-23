@@ -5,12 +5,12 @@ const byNewest = (a: { data: { date: Date } }, b: { data: { date: Date } }) =>
   b.data.date.valueOf() - a.data.date.valueOf();
 
 const projects = (await getCollection('projects'))
-  .filter((project) => project.data.featured)
+  .filter((project) => project.data.featured && !project.data.draft)
   .sort(byNewest)
-  .slice(0, 3);
+  .slice(0, 4);
 
 const books = (await getCollection('readings'))
-  .filter((reading) => reading.data.type === 'book')
+  .filter((reading) => !reading.data.draft)
   .sort(byNewest)
   .slice(0, 3);
 ---
