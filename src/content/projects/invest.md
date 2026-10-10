@@ -1,198 +1,97 @@
 ---
-title: Get Rich slow
+title: How to Get Rich SLOW
 description: A journey through my first investments.
-date: 2026-24-08
+date: 2026-08-24
 status: complete
-tags: [Investments, Money, Personal Journey]
+tags:
+- Investments
+- Money
+- Personal Journey
 featured: true
-draft: true
---------------
-
-# Project title
-
-A short introduction to the project. Keep this paragraph concise and explain **what it is**, **why it exists**, and **what you did**.
-
-You can use **bold text**, *italic text*, ~~strikethrough~~, and `inline code`.
-
+draft: false
 ---
 
-## A good constraint
+Have you ever dreamed about getting rich overnight?
 
-Keeping the stack uncomplicated meant more time could go toward the people using it.
+If your answer is yes, keep reading. Today I want to write about my first steps into investing and saving, and how I discovered that building wealth is probably much less exciting than I imagined. There is no secret trick or shortcut. You just have to **play the long game**.
 
-This is a normal paragraph with a [link to another website](https://example.com).
+## From engineer to investor
 
-You can also use:
+Everything started with a newspaper article my father came across. It was about how compound interest could help you save enough money to buy a house.
 
-* Unordered lists
-* Multiple items
-* **Bold text inside lists**
-* `Code inside lists`
+The housing market in Spain is crazy right now. Banks usually don't finance the full price of a house, but around 80%. That means that for a €300,000 house, you would need €60,000 just for the down payment. Add taxes, fees and other expenses, and you can easily be looking at around €90,000.
 
-### Smaller section
+For a young person like me, saving that amount of money feels almost impossible.
 
-You can have multiple levels of headings:
+My dad, very excited, sent me the article because he thought he had found the solution.
 
-#### Heading 4
+The article showed how, with an initial investment of €10,000 and an average annual return of 8%, you could end up with around €75,600 after ten years.
 
-##### Heading 5
+It sounds amazing.
 
-###### Heading 6
+But there was a small detail.
 
----
+To reach that amount, the example also assumed investing €300 every month for those ten years.
 
-## The idea
+That's:
 
-> Sometimes the most interesting constraint is simply deciding what **not** to build.
+**€300 × 12 months × 10 years = €36,000**
 
-Blockquotes are useful for highlighting an idea, quote, or personal reflection.
+So the €75,600 wasn't exactly €10,000 magically becoming €75,600. A large part of the final amount came from the money being consistently invested over time, with compound returns doing their part along the way.
 
----
+And honestly, this was probably the moment when investing started to make sense to me.
 
-## What I built
+## Discoveries
 
-1. A new website
-2. A reusable component system
-3. A simple content structure
-4. A deployment workflow
+I started doing some research.
 
-You can also mix lists:
+I had always known that investing existed, of course. But I had never really understood how ordinary people could use it to build wealth over decades.
 
-* **Frontend**
+I eventually discovered the world of passive investing and index funds, and I came across **Bogleheads España**, a community focused on passive, indexed and periodic investing. It was there that I started learning the basics and understanding why investing doesn't necessarily have to mean constantly buying and selling stocks or trying to predict the next big company.
 
-  * Astro
-  * CSS
-  * JavaScript
-* **Backend**
+The idea was surprisingly simple:
 
-  * PHP
-  * MySQL
-* **Deployment**
+Invest regularly.
+Keep costs low.
+Diversify.
+Don't try to predict the market.
+And, most importantly, give your money a lot of time.
 
-  * VPS
-  * Docker
-  * Cloudflare
+The more I learned, the more I realized that the interesting part wasn't finding the perfect investment.
 
----
+It was starting early.
 
-## Code
+## Starting my investment journey
 
-Inline code looks like this: `npm run dev`.
+That's why I decided to start investing myself.
 
-For larger examples, use fenced code blocks:
+I opened an account with **MyInvestor** and started investing in index funds with a relatively small monthly contribution.
 
-```javascript
-const project = {
-  title: "AISC Madrid",
-  status: "complete",
-};
+I'm not expecting to become rich next year.
 
-console.log(project);
-```
+Actually, that's the whole point.
 
-You can specify different languages:
+I'm investing money that I don't expect to need for a very long time and letting compound growth do what it does best: work slowly.
 
-```php
-<?php
+I think this is one of the most interesting things I've discovered so far. As an engineer, I'm used to looking for optimization, efficiency and the best possible solution. But investing has taught me that sometimes the best strategy is not to constantly optimize.
 
-echo "Hello, AISC Madrid!";
-```
+Sometimes, it's simply to **start, stay consistent and wait**.
 
-```css
-.container {
-  width: min(var(--content-width), calc(100% - 3rem));
-  margin-inline: auto;
-}
-```
+## Conclusion
 
-```bash
-npm run dev
-```
+I started this journey because of an article about buying a house.
 
----
+I ended up discovering something much bigger: a completely different way of thinking about money and time.
 
-## Images
+Compound interest isn't a magic formula. It doesn't turn €10,000 into a fortune overnight. It rewards consistency, patience and, above everything else, time.
 
-A normal Markdown image:
+I'm still at the beginning of my journey. I don't know where these investments will take me, or whether they'll eventually help me buy a house.
 
-![AISC Madrid website screenshot](/images/aisc-home.png)
+But I do know one thing:
 
-You can also add a title:
+**The best time to start playing the long game is probably earlier than you think.**
 
-![AISC Madrid website screenshot](/images/aisc-home.png "AISC Madrid homepage")
+And I'm glad I finally started.
 
-For Astro projects, you may alternatively want to use Astro's image system/components if you need optimization or more control.
 
----
 
-## Links
-
-[Visit the live website](https://example.com)
-
-You can also simply write a URL:
-
-https://example.com
-
----
-
-## A table
-
-| Technology | Purpose  | Why                     |
-| ---------- | -------- | ----------------------- |
-| Astro      | Frontend | Simple and fast         |
-| PHP        | Backend  | Existing infrastructure |
-| MySQL      | Database | Content management      |
-| CSS        | Styling  | Custom visual identity  |
-
----
-
-## A horizontal divider
-
-You can separate major sections with:
-
----
-
-## What I learned
-
-Writing projects this way makes it easy to document both the technical side and the things that aren't obvious from the final result.
-
-You can combine **technical details** with personal observations without turning the page into formal documentation.
-
----
-
-## Things I would change
-
-* Improve the content management workflow
-* Add better image handling
-* Simplify some components
-* Improve accessibility
-
----
-
-## A small detail
-
-<details>
-<summary>Technical details</summary>
-
-This section can be collapsed.
-
-It is useful for information that is interesting but shouldn't interrupt the main flow.
-
-For example:
-
-* Deployment details
-* Database decisions
-* Commands
-* Implementation notes
-
-</details>
-
----
-
-## Final thought
-
-The finished website matters, but the decisions behind it are often more interesting.
-
-**Built with:** Astro · PHP · MySQL
-
-**Status:** Complete
